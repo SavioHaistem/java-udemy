@@ -1,9 +1,21 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        printProducts();
-        casting();
+        useScanner();
     }
-    
+    static void useScanner() {
+        Scanner inputIn = new Scanner(System.in);
+
+        System.out.print("digite seu nome: ");
+        String userName = inputIn.next();
+        System.out.print("digite sua idade: ");
+        Integer userAge = inputIn.nextInt();
+
+        System.out.printf("O usuario %s de %d anos disse Hello World %n", userName, userAge);
+
+        inputIn.close();
+    }
     static void printProducts() {
         String product1 = "Computer";
         String product2 = "Office desk";
