@@ -2,7 +2,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        useScanner();
+        basicCalcs();
+    }
+    static void basicCalcs() {
+        double x = 2.0;
+        double y = 3.0;
+        double z = -4.0;
+        double A, B, C;
+
+        A = Math.sqrt(x);
+        B = Math.sqrt(y);
+        C = Math.sqrt(25.0);
+
+        System.out.println(A);
     }
     static void useScanner() {
         Scanner inputIn = new Scanner(System.in);
