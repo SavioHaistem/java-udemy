@@ -2,7 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        basicCalcs();
+        double circule = Double.parseDouble(args[0]);
+
+        System.out.printf("A= %.4f",circuference(circule));
+    }
+    static double circuference(Double x) {
+        return Math.PI * Math.pow(x, 2);
     }
     static void basicCalcs() {
         double x = 2.0;
