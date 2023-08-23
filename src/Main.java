@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
         printProducts();
-        forceDouble();
+        casting();
     }
-
+    
     static void printProducts() {
         String product1 = "Computer";
         String product2 = "Office desk";
@@ -21,10 +21,10 @@ public class Main {
         System.out.println(" ");
         System.out.printf("Record: %d, code %d and gender %s%n",age, code, gender);
         System.out.println(" ");
-        System.out.printf("Measure with eight decimal places: %f%nRounded (three decimal places): %.3f", measure, measure);
+        System.out.printf("Measure with eight decimal places: %f%nRounded (three decimal places): %.3f%n %n", measure, measure);
     }
 
-    static void forceDouble() {
+    static void casting() {
         /*
         * Ao fazermos uma expressao matematica com numeros inteiros o java ira
         * considerar que o resultado da operacao sera inteiro para evitar isso devemos fazer
@@ -38,5 +38,15 @@ public class Main {
 
         result = (double) x / y;
         System.out.println(result);
+
+        /*
+        * relacionando variaveis de tipos diferentes
+        * */
+
+        int first = 1;
+        double second = 2.0;
+
+        first = (int) second;
+        System.out.printf("%n" + first);
     }
 }
