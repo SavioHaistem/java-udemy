@@ -9,10 +9,15 @@ public class Main {
 
         System.out.print("digite seu nome: ");
         String userName = inputIn.next();
+
         System.out.print("digite sua idade: ");
         Integer userAge = inputIn.nextInt();
 
-        System.out.printf("O usuario %s de %d anos disse Hello World %n", userName, userAge);
+        System.out.print("sua frase de efeito: ");
+        inputIn.nextLine(); //consumindo a quebra de linha;
+        String wordEffect = inputIn.nextLine();
+
+        System.out.printf("O usuario %s de %d anos disse %s %n", userName, userAge, wordEffect);
 
         inputIn.close();
     }
