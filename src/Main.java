@@ -2,13 +2,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        double circule = Double.parseDouble(args[0]);
-
-        System.out.printf("A= %.4f",circuference(circule));
+        condition(args[0]);
     }
+
+    static void condition(String args) {
+        if (args.equals("sim")) {
+            System.out.println("nao");
+        } else {
+            System.out.println("sim");
+        }
+    }
+
     static double circuference(Double x) {
         return Math.PI * Math.pow(x, 2);
     }
+
     static void basicCalcs() {
         double x = 2.0;
         double y = 3.0;
@@ -21,6 +29,7 @@ public class Main {
 
         System.out.println(A);
     }
+
     static void useScanner() {
         Scanner inputIn = new Scanner(System.in);
 
@@ -38,6 +47,7 @@ public class Main {
 
         inputIn.close();
     }
+
     static void printProducts() {
         String product1 = "Computer";
         String product2 = "Office desk";
@@ -51,19 +61,19 @@ public class Main {
         double measure = 53.234567;
 
         System.out.println(" ");
-        System.out.printf("%s, which price is R$ %.2f reais %n%s which price is R$ %.2f reais %n",product1, computerPrice, product2, deskPrice);
+        System.out.printf("%s, which price is R$ %.2f reais %n%s which price is R$ %.2f reais %n", product1, computerPrice, product2, deskPrice);
         System.out.println(" ");
-        System.out.printf("Record: %d, code %d and gender %s%n",age, code, gender);
+        System.out.printf("Record: %d, code %d and gender %s%n", age, code, gender);
         System.out.println(" ");
         System.out.printf("Measure with eight decimal places: %f%nRounded (three decimal places): %.3f%n %n", measure, measure);
     }
 
     static void casting() {
         /*
-        * Ao fazermos uma expressao matematica com numeros inteiros o java ira
-        * considerar que o resultado da operacao sera inteiro para evitar isso devemos fazer
-        * o seguinte:
-        * */
+         * Ao fazermos uma expressao matematica com numeros inteiros o java ira
+         * considerar que o resultado da operacao sera inteiro para evitar isso devemos fazer
+         * o seguinte:
+         * */
 
         int x, y;
         double result;
@@ -74,8 +84,8 @@ public class Main {
         System.out.println(result);
 
         /*
-        * relacionando variaveis de tipos diferentes
-        * */
+         * relacionando variaveis de tipos diferentes
+         * */
 
         int first = 1;
         double second = 2.0;
