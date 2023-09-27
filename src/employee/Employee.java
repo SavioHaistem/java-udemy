@@ -6,11 +6,11 @@ public class Employee {
     public Double tax;
 
     public double NetSalary() {
-        return this.Salary - this.tax;
+        return Salary - tax;
     }
 
     public void IncreaseSalary(double percent) {
-        this.Salary = this.Salary * (percent / 100);
+        this.Salary += (Salary / 100) * percent;
     }
 
     public String toString() {
