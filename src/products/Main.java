@@ -1,3 +1,5 @@
+package products;
+
 import java.util.Scanner;
 
 import products.Product;
@@ -26,6 +28,8 @@ public class Main {
         //repondo o estoque
         System.out.println("Digite a quantidade reposta: ");
         product.addProducts(scan.nextInt());
-        System.out.printf("O estoque agora vale %.2f e possui %d unidades de %s%n", product.totalValueInStock(), product.quant, product.name);
+        System.out.println(product);
+
+        scan.close();
     }
 }
