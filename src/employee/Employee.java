@@ -10,7 +10,7 @@ public class Employee {
     }
 
     public void IncreaseSalary(double percent) {
-        this.Salary = (this.Salary / 100) * percent;
+        this.Salary = this.Salary * (percent / 100);
     }
 
     public String toString() {
