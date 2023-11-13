@@ -3,15 +3,15 @@ import entities.HourContract;
 import entities.Worker;
 import entities.enums.WorkLevel;
 
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Program {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Scanner scan = new Scanner(System.in);
-        DateTimeFormatter formatDefaultDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter formatIncome = DateTimeFormatter.ofPattern("MM/yyyy");
+        SimpleDateFormat defaultDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         System.out.print("Enter departament's name: ");
         String departamentName = scan.nextLine();
@@ -33,11 +33,11 @@ public class Program {
         int contractsQuantity = scan.nextInt();
 
         for (int count = 0; count < contractsQuantity; count++) {
-            System.out.println("Enter contract #" + count + " data");
+            System.out.println("Enter contract #" + (count + 1) + " data");
             System.out.print("Date (DD/MM/YYYY): ");
             scan.nextLine();
-            String contractDate = scan.nextLine();
-            Date date = (Date) formatDefaultDate.parse(contractDate);
+            String dateStringGetter = scan.nextLine();
+            Date contractDate = defaultDateFormat.parse(dateStringGetter);
 
             System.out.print("Value per hour: ");
             Double valuePerHour = scan.nextDouble();
@@ -45,7 +45,7 @@ public class Program {
             System.out.println("Duration: ");
             Integer duration = scan.nextInt();
 
-            HourContract contract = new HourContract(date,valuePerHour,duration);
+            HourContract contract = new HourContract(contractDate,valuePerHour,duration);
             System.out.println(contract);
         }
     }
