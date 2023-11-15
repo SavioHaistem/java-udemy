@@ -1,6 +1,5 @@
 package entities;
 import entities.enums.WorkLevel;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,14 +45,30 @@ public class Worker {
         this.baseSalary = baseSalary;
     }
 
+    public void addContract(HourContract contract) {
+        this.contracts.add(contract);
+    }
+
+    public Double income(Integer year, Integer month) {
+        for ( HourContract contract : contracts ) {
+            int contractYear = contract.getDate().getYear();
+            int contractMonth = contract.getDate().getMonth();
+
+            if (contractYear == year && contractMonth == month) {
+                return baseSalary + contract.totalValue();
+            }
+        }
+        return baseSalary;
+    }
+
     @Override
     public String toString() {
         return "Worker{ " +
                 "name='" + name + '\'' +
-                ", workerLevel=" + workerLevel +
-                ", baseSalary=" + baseSalary +
-                ", department=" + department +
-                ", contracts=" + contracts +
+                ", workerLevel = " + workerLevel +
+                ", baseSalary = " + baseSalary +
+                ", department = " + department +
+                ", contracts = " + contracts +
                 "} ";
     }
 }

@@ -5,6 +5,7 @@ import entities.enums.WorkLevel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -12,8 +13,10 @@ public class Program {
     public static void main(String[] args) throws ParseException {
         Scanner scan = new Scanner(System.in);
         SimpleDateFormat defaultDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat incomeDateFormat = new SimpleDateFormat("MM/yyyy");
 
         System.out.print("Enter departament's name: ");
+
         String departamentName = scan.nextLine();
         Department workerDepartament = new Department(departamentName);
 
@@ -25,9 +28,10 @@ public class Program {
         String level = scan.nextLine();
         WorkLevel workerlevel = WorkLevel.valueOf(level);
 
-
         System.out.print("Base Salary: ");
         Double baseSalary = scan.nextDouble();
+
+        Worker worker = new Worker(workerName,workerlevel,baseSalary,workerDepartament);
 
         System.out.print("How many contracts do this worker ? ");
         int contractsQuantity = scan.nextInt();
@@ -42,11 +46,17 @@ public class Program {
             System.out.print("Value per hour: ");
             Double valuePerHour = scan.nextDouble();
 
-            System.out.println("Duration: ");
+            System.out.print("Duration: ");
             Integer duration = scan.nextInt();
 
             HourContract contract = new HourContract(contractDate,valuePerHour,duration);
-            System.out.println(contract);
+            worker.addContract(contract);
         }
+
+        System.out.println("Enter month to calculate your income (MM/yyyy)");
+        scan.nextLine();
+        String incomeDateGetter = scan.nextLine();
+        Date incomeDate = incomeDateFormat.parse(incomeDateGetter);
+        System.out.println(worker.income(incomeDate.getYear(),incomeDate.getMonth()));
     }
 }
