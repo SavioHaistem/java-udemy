@@ -2,19 +2,22 @@ package entities;
 
 import entities.enums.OrderStatus;
 
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Order {
     private Date moment;
     private OrderStatus status;
-    private ArrayList<OrderItem> OrderItems;
-    private DateTimeFormatter momentFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    private final Client client;
+    private final ArrayList<OrderItem> OrderItems = new ArrayList<>();
+    private final SimpleDateFormat birthDateFormat = new SimpleDateFormat("(dd/MM/yyyy)");
+    private final SimpleDateFormat orderMomentFormat = new SimpleDateFormat("(dd/MM/yyyy)");
 
-    public Order(Date moment, OrderStatus status) {
+    public Order(Date moment, OrderStatus status, Client client) {
         this.moment = moment;
         this.status = status;
+        this.client = client;
     }
 
     public Date getMoment() {
@@ -49,5 +52,26 @@ public class Order {
         }
 
         return orderValue;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder clientString = new StringBuilder();
+
+        clientString.append("ORDER SUMMARY:\n");
+        clientString.append("Order moment: ").append(this.orderMomentFormat.format(this.moment)).append("\n");
+        clientString.append("Order status: ").append(this.status).append("\n");
+        clientString.append("Client: ").append(client.getName()).append(" ");
+        clientString.append(this.birthDateFormat.format(this.client.getBirthDate())).append(" - ");
+        clientString.append(this.client.getEmail()).append("\n");
+        clientString.append("Order items: ").append("\n");
+
+        for ( OrderItem orderItem : this.OrderItems) {
+            clientString.append(orderItem.getProduct().getName()).append(", ");
+            clientString.append("Quantity: ").append(orderItem.getQuantity()).append(", ");
+            clientString.append("Subtotal: $").append(orderItem.subTotal()).append("\n");
+        }
+
+        return clientString.toString();
     }
 }

@@ -1,15 +1,10 @@
 package entities;
-
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Client {
     private Date birthDate;
     private String name;
     private String email;
-    private ArrayList<Order> orders;
-    private DateTimeFormatter birthDateFormat  = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Client(Date birthDate, String name, String email) {
         this.birthDate = birthDate;
