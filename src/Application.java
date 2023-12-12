@@ -1,14 +1,16 @@
 import entities.Employe;
 import entities.OutSourcedEmployee;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Enter the number of employees: ");
+        System.out.print("Enter the number of employees: ");
         int manyemployees = scan.nextInt();
+        ArrayList<Employe> employes = new ArrayList<>(manyemployees);
 
         for (int count = 0; count < manyemployees; count++) {
             System.out.println("Employee #" + (count + 1) + " data:");
@@ -20,7 +22,7 @@ public class Application {
             String name = scan.nextLine();
             System.out.print("hours: ");
             Integer hours = scan.nextInt();
-            System.out.print("value per hour :");
+            System.out.print("value per hour: ");
             Double valueperhour = scan.nextDouble();
 
             if (outsourced) {
@@ -28,9 +30,16 @@ public class Application {
                 Double additional = scan.nextDouble();
 
                 Employe employee = new OutSourcedEmployee(name,hours,valueperhour,additional);
+                employes.add(employee);
+            } else {
+                Employe employee = new Employe(name,hours,valueperhour);
+                employes.add(employee);
             }
+        }
 
-            Employe employee = new Employe(name,hours,valueperhour);
+        System.out.println("Payments: ");
+        for (Employe employee : employes) {
+            System.out.printf("%s - $ %.2f%n",employee.getName(),employee.payment());
         }
     }
 

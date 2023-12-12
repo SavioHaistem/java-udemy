@@ -20,4 +20,9 @@ public final class OutSourcedEmployee extends Employe {
     public void setAdditional(Double additional) {
         this.additional = additional;
     }
+
+    @Override
+    public Double payment() {
+        return (super.payment() + additional);
+    }
 }
