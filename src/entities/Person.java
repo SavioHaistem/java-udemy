@@ -26,4 +26,12 @@ public abstract class Person {
     }
 
     public abstract Double calculateTax();
+
+    @Override
+    public String toString() {
+        StringBuilder personString = new StringBuilder();
+        personString.append(name).append(": $ ").append(calculateTax());
+
+        return personString.toString();
+    }
 }
