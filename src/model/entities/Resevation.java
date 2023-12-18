@@ -39,8 +39,18 @@ public class Resevation {
     }
 
     public void updateDates(Date checkIn, Date checkOut) {
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
+        try {
+            if (checkIn.getTime() > checkOut.getTime()) {
+                throw new Exception("A data de checkin deve ser menor que a data de checkout");
+            } else if (checkIn.getTime() < this.checkIn.getTime() || checkOut.getTime() < this.checkOut.getTime()) {
+                throw new Exception("Para atualizar a data de checkin e checkout voce deve adicionar uma data maior");
+            } else {
+                this.checkIn = checkIn;
+                this.checkOut = checkOut;
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     @Override
