@@ -1,5 +1,29 @@
+import model.entities.Resevation;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        try {
+            Scanner scanner = new Scanner(System.in);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+            System.out.print("Room number: ");
+            int roomNumber = scanner.nextInt();
+            System.out.print("check-in date: ");
+            scanner.nextLine();
+            Date checkInDate = dateFormat.parse(scanner.nextLine());
+            System.out.print("check-out date: ");
+            Date checkOutDate = dateFormat.parse(scanner.nextLine());
+
+            Resevation reserve = new Resevation(roomNumber,checkInDate,checkOutDate);
+            reserve.updateDates(dateFormat.parse("20/01/2000"),dateFormat.parse("19/01/2000"));
+            System.out.println(reserve);
+        } catch (ParseException | IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
