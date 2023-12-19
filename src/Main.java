@@ -1,4 +1,5 @@
 import model.entities.Resevation;
+import model.exceptions.DomainException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,13 +20,13 @@ public class Main {
             System.out.print("check-out date: ");
             Date checkOutDate = dateFormat.parse(scanner.nextLine());
             if (checkOutDate.before(checkInDate)) {
-                throw new IllegalArgumentException("A data de logout deve ser depois da data de login");
+                throw new DomainException("A data de logout deve ser depois da data de login");
             }
 
             Resevation reserve = new Resevation(roomNumber,checkInDate,checkOutDate);
             reserve.updateDates(dateFormat.parse("19/01/1999"),dateFormat.parse("20/01/1999"));
             System.out.println(reserve);
-        } catch (ParseException | IllegalArgumentException e) {
+        } catch (ParseException | DomainException e) {
             System.err.println(e.getMessage());
         }
     }

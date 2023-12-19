@@ -1,5 +1,7 @@
 package model.entities;
 
+import model.exceptions.DomainException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -38,11 +40,11 @@ public class Resevation {
         return TimeUnit.DAYS.convert(difference,TimeUnit.MILLISECONDS);
     }
 
-    public void updateDates(Date checkIn, Date checkOut) {
+    public void updateDates(Date checkIn, Date checkOut) throws DomainException {
         if (checkOut.before(checkIn)) {
-            throw new IllegalArgumentException("A data de checkin deve ser menor que a data de checkout para atualizar a data");
+            throw new DomainException("A data de checkin deve ser menor que a data de checkout para atualizar a data");
         } else if (checkIn.before(this.checkIn) || checkOut.before(this.checkOut)) {
-            throw new IllegalArgumentException("Para atualizar a data de checkin e checkout voce deve adicionar uma data depois da atual");
+            throw new DomainException("Para atualizar a data de checkin e checkout voce deve adicionar uma data depois da atual");
         } else {
             this.checkIn = checkIn;
             this.checkOut = checkOut;
