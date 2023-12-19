@@ -13,10 +13,14 @@ public class Resevation {
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 
-    public Resevation(Integer roomNumber, Date checkIn, Date checkOut) {
+    public Resevation(Integer roomNumber, Date checkIn, Date checkOut) throws DomainException {
+        if (checkOut.before(checkIn)) {
+            throw new DomainException("A data de entrada precisa ser menor que a data de saida para realizar o cadastro");
+        } else {
+            this.checkIn = checkIn;
+            this.checkOut = checkOut;
+        }
         this.roomNumber = roomNumber;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
     }
 
     public Integer getRoomNumber() {

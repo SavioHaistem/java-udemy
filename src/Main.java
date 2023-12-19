@@ -17,17 +17,19 @@ public class Main {
             System.out.print("check-in date: ");
             scanner.nextLine();
             Date checkInDate = dateFormat.parse(scanner.nextLine());
+
             System.out.print("check-out date: ");
             Date checkOutDate = dateFormat.parse(scanner.nextLine());
-            if (checkOutDate.before(checkInDate)) {
-                throw new DomainException("A data de logout deve ser depois da data de login");
-            }
 
             Resevation reserve = new Resevation(roomNumber,checkInDate,checkOutDate);
             reserve.updateDates(dateFormat.parse("19/01/1999"),dateFormat.parse("20/01/1999"));
             System.out.println(reserve);
-        } catch (ParseException | DomainException e) {
+        } catch (ParseException e) {
+            System.err.println("Parse date exception");
+        } catch (DomainException e) {
             System.err.println(e.getMessage());
+        } catch (RuntimeException e) {
+            System.err.println("Runtime Exception Unespected");
         }
     }
 }
