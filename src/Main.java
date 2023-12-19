@@ -18,9 +18,12 @@ public class Main {
             Date checkInDate = dateFormat.parse(scanner.nextLine());
             System.out.print("check-out date: ");
             Date checkOutDate = dateFormat.parse(scanner.nextLine());
+            if (checkOutDate.before(checkInDate)) {
+                throw new IllegalArgumentException("A data de logout deve ser depois da data de login");
+            }
 
             Resevation reserve = new Resevation(roomNumber,checkInDate,checkOutDate);
-            reserve.updateDates(dateFormat.parse("20/01/2000"),dateFormat.parse("19/01/2000"));
+            reserve.updateDates(dateFormat.parse("19/01/1999"),dateFormat.parse("20/01/1999"));
             System.out.println(reserve);
         } catch (ParseException | IllegalArgumentException e) {
             System.err.println(e.getMessage());

@@ -40,9 +40,9 @@ public class Resevation {
 
     public void updateDates(Date checkIn, Date checkOut) {
         if (checkOut.before(checkIn)) {
-            throw new IllegalArgumentException("A data de checkin deve ser menor que a data de checkout");
+            throw new IllegalArgumentException("A data de checkin deve ser menor que a data de checkout para atualizar a data");
         } else if (checkIn.before(this.checkIn) || checkOut.before(this.checkOut)) {
-            throw new IllegalArgumentException("Para atualizar a data de checkin e checkout voce deve adicionar uma data maior");
+            throw new IllegalArgumentException("Para atualizar a data de checkin e checkout voce deve adicionar uma data depois da atual");
         } else {
             this.checkIn = checkIn;
             this.checkOut = checkOut;
