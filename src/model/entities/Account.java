@@ -31,10 +31,6 @@ public final class Account {
         return balance;
     }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
     public Double getWithDrawLimit() {
         return withDrawLimit;
     }
@@ -44,7 +40,7 @@ public final class Account {
     }
 
     public void deposit(Double amount) {
-        
+
     }
 
     public void withDraw(Double amount) {
