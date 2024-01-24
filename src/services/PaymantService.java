@@ -13,11 +13,13 @@ public class PaymantService {
     }
 
     public void processParcels(Contract contract, Integer parcelQuantity) {
-        double parcelValue = taxService.calculateTax((contract.getValue() / parcelQuantity));
+        double parcel = contract.getValue() / parcelQuantity;
+        for (int count = 1; count <= parcelQuantity; count++) {
+            double withInterest = parcel + taxService.simpleInterest(parcel,count);
+            double parcelPrice = withInterest + taxService.paymantTax(withInterest);
 
-        for (int count = 0; count < parcelQuantity; count++) {
-            LocalDate parcelDate = contract.getDate().plusMonths((count + 1));
-            contract.addParcel(new Parcel(parcelValue,parcelDate));
+            LocalDate parcelDate = contract.getDate().plusMonths((count));
+            contract.addParcel(new Parcel(parcelPrice,parcelDate));
         }
     }
 }

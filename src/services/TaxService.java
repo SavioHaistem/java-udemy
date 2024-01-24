@@ -1,5 +1,6 @@
 package services;
 
 public interface TaxService {
-    double calculateTax(double amount);
+    double simpleInterest(double parcel, int monthly);
+    double paymantTax(double parcel);
 }
