@@ -1,29 +1,42 @@
-import entities.Course;
-import services.AssignStudents;
+import entities.Student;
+
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Course A = new Course("A");
-        Course B = new Course("B");
-        Course C = new Course("C");
-        AssignStudents assignStudents = new AssignStudents();
+        Set<Student> students = new HashSet<>();
 
-        System.out.print("How many students for course A ?");
+
+        System.out.print("How many students for course A ? ");
         int countA = scan.nextInt();
-        assignStudents.assign(A,countA);
+        for (int count = 0; count < countA; count++) {
+            int id = scan.nextInt();
+            Student student = new Student(id);
+            students.add(student);
+        }
 
-        System.out.print("How many students for course B ?");
+        System.out.print("How many students for course B ? ");
         int countB = scan.nextInt();
-        assignStudents.assign(B,countB);
+        for (int count = 0; count < countB; count++) {
+            int id = scan.nextInt();
+            Student student = new  Student(id);
+            students.add(student);
+        }
 
-        System.out.print("How many students for course C ?");
+        System.out.print("How many students for course C ? ");
         int countC = scan.nextInt();
-        assignStudents.assign(C,countC);
+        for (int count = 0; count < countC; count++) {
+            int id = scan.nextInt();
+            Student student = new Student(id);
+            students.add(student);
+        }
 
-        System.out.println(A);
-        System.out.println(B);
-        System.out.println(C);
+        System.out.println("Plataform students: ");
+        for (Student student : students) {
+            System.out.println("Student: " + student.getId());
+        }
     }
 }
